@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "react-search-autocomplete": "^8.0.0",
     "react-slick": "^0.29.0",
+    "react-spinners": "^0.13.7",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },

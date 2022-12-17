@@ -1,4 +1,4 @@
-import { useToast } from '@chakra-ui/react';
+import { CircularProgress, useToast } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 
 export const AppContext = createContext()
@@ -1564,6 +1564,7 @@ const AllData={
         const [cartData, setCartData] = useState([]);
         const [TotalPrice, setTotalPrice] = useState(0);
         const[quantity,settotalQuntity]=useState(0)
+
         const toast = useToast()
 
         const LoginUser = (name)=>{
@@ -1647,7 +1648,33 @@ const AllData={
             handlePrice();
             handleQty()
           });
+
+          const shortString = (text, limit = 15) => {
+            return text.slice(0, limit) + (text.length > limit ? "..." : "");
+        };
+
+        const shortStringdesc = (text, limit = 25) => {
+            return text.slice(0, limit) + (text.length > limit ? "..." : "");
+        };
+           
+        const random = Math.floor(Math.random() * 9000 + 1000);
+        const randomforrating1=Math.floor(Math.random()*4+1);
+        const randomforrating2=Math.floor(Math.random()*9+1);
         
+
+        let count=0
+        function randomnum(params){
+            for (let i = 1; i < params; i++) {
+                 count = 0;
+   for (let j = 0; j < Math.floor(Math.random() * 2000+1000); j++) {
+    count++;
+}
+    console.log(count);
+}
+}
+
+      
+
         return (
           <AppContext.Provider value={{ AllData,
             handleRemove,isAuth,
@@ -1656,7 +1683,7 @@ const AllData={
           setCartData,
           cartData,
           handleCart,userName,
-          TotalPrice ,LoginUser,
+          TotalPrice ,LoginUser,shortString,shortStringdesc,random,randomforrating1,randomforrating2,randomnum,count,
 LogOutUser}} >
       
             {children}
