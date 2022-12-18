@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 *{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,4 +13,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+::-webkit-scrollbar{
+  width:0.7rem
+}
+
+::-webkit-scrollbar-track{
+  background-color: white;
+  
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgb(236, 43, 181);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 15px;
+  /* height: 10%; */
 }

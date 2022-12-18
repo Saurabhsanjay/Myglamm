@@ -1594,6 +1594,8 @@ const SearchBar = () => {
       // onFocus={handleOnFocus}
       autoFocus
       formatResult={formatResult}
+      styling={{borderRadius:"7px"}}
+      
     />
   </div>
   )

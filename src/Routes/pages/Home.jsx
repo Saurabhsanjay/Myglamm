@@ -44,7 +44,7 @@ const Home = () => {
     <HStack padding='30px 10px' justify='center'>
       
       <Text bgClip='text'
-  bgGradient='linear(to-l, #7928CA, #FF0080)'  alignSelf='center' fontSize='2xl'  as='b'>LATEST GLAMM LAUNCHES</Text>
+  bgGradient='linear(to-l, #7928CA, #FF0080)'  alignSelf='center' fontSize='2xl'  as='b'>LATEST PARADISE LAUNCHES</Text>
   </HStack>
   <SimpleGrid p={{base:25,md:50,}}   columns={{base:2, md:2, lg:4}} maxW="1400px"
      margin='auto'  gap={6}>
@@ -63,7 +63,7 @@ const Home = () => {
     </Box>
     <Box>
     <Image onClick={()=>Navigate('/makeup')}  w='100%' src='https://files.myglamm.com/site-images/original/700x488lgl_1.jpg'/>
-  <Text fontWeight='500'  padding='10px 20px' boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px" textAlign='center'>LIT Matte About It Lip Color</Text>
+  <Text fontWeight='500'  padding='10px 20px' boxShadow= "rgba(0, 0, 0, 0.24) 0px 3px 8px" textAlign='center'>LIT Matte Lip Color</Text>
     </Box>
  
  
@@ -93,11 +93,7 @@ const Home = () => {
     </SimpleGrid>
         
         
-    <iframe  Autoplay width="90%" height="409" src="https://www.youtube.com/embed/GdcxfyKNiDg" title="Shraddha Kapoor Wants You To #TellMyGlammWhatYouWant | MyGlamm TV Ad" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-    >
-
-    </iframe>
+   
     
     </VStack>
   )

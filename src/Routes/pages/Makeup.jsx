@@ -39,7 +39,7 @@ const Makeup = () => {
     }
     
     // Later call it like so
-    generateRandomNumbers(10, 20, 30)
+   
     
     
     
@@ -69,7 +69,7 @@ const Makeup = () => {
                 <Spacer/>
                 <Box py={3} px='2' display='flex' w={'full'}  >
                 <FiHeart fontSize={'1.3rem'} style={{ marginRight: "5px" }} /><Spacer />
-                <Button bg={'black'} color='white' fontWeight='medium' size={{ base: "xs", sm: "sm" }} onClick={()=>handleCart(el)} ><HiOutlineShoppingBag fontSize={'1.3rem'} style={{ marginRight: "5px" }} /> Add To Cart</Button> 
+                <Button zIndex={999} bg={'black'} color='white' fontWeight='medium' size={{ base: "xs", sm: "sm" }} onClick={()=>handleCart(el)} ><HiOutlineShoppingBag fontSize={'1.3rem'} style={{ marginRight: "5px" }} /> Add To Cart</Button> 
                 </Box>
             </Box>
             )

@@ -4,12 +4,18 @@ import AllRoutes from './Routes/AllRoutes'
 import './App.css'
  import "slick-carousel/slick/slick.css"; 
  import "slick-carousel/slick/slick-theme.css";
+import Footer from './Components/Footer';
+import { Divider, Stack } from '@chakra-ui/react';
+import NavMobile from './Components/NavMobile';
 const App = () => {
   return (
-    <div>
+    <Stack>
       <Navbar/>
+      <NavMobile/>
     <AllRoutes/>
-    </div>
+    <Divider/>
+    <Footer/>
+    </Stack>
   )
 }
 

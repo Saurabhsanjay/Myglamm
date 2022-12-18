@@ -1,4 +1,4 @@
-import { Badge, Button, Divider, Flex, HStack, Image, Input, InputGroup, InputLeftElement, Spacer, Text, useDisclosure, useToast, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Badge, Button, Divider, Flex, HStack, Image, Input, InputGroup, InputLeftElement, Spacer, Stack, Text, useDisclosure, useToast, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import React, { useContext } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AddIcon, ArrowRightIcon, MinusIcon, SearchIcon, StarIcon } from '@chakra-ui/icons'
@@ -19,6 +19,7 @@ import {   Drawer,
   Box,
   } from '@chakra-ui/react'
 import Scrollbars from 'react-custom-scrollbars-2';
+import logoparadise from './badges/LOGOPARA.png'
 const Navbar = () => {
   
   const{   handleRemove,
@@ -77,17 +78,18 @@ const toast = useToast()
 
   }
   return (
+    <Stack display={{base:"none",md:"block"}}>
     <>
     <HStack padding='10px 30px' bgColor='#fee8e8'>
         <Text onClick={()=> Navigate('/haircare')}  marginRight='20px'  fontSize='xs' fontWeight="500">Pick any product ar Rs 199</Text>
         <Text onClick={()=>Navigate('/collection')} as='b' color='#D53F8C' fontSize='xs' fontWeight="500">SHOP NOW</Text>
         <Spacer/>
         <Text><SiHomeassistantcommunitystore/></Text>
-        <Text onClick={()=>Navigate('/collection')} fontSize='xs' fontWeight="500">  My Glamm Store</Text>
+        <Text onClick={()=>Navigate('/collection')} fontSize='xs' fontWeight="500">  My Paradise Store</Text>
     </HStack>
 
-   <HStack padding='8px 30px' margin='auto'>
-   <Image onClick={()=>Navigate('/')}  marginRight='20px' w='150px'   src='https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg'/>
+   <HStack  padding='8px 30px' margin='auto'>
+   <Image onClick={()=>Navigate('/')}  marginRight='20px' w='150px'   src={logoparadise}/>
    <InputGroup display={{base:"none", md:"none", lg:"block"}} >
     <InputLeftElement
       pointerEvents='none'
@@ -123,7 +125,7 @@ const toast = useToast()
 
     </HStack>
   </HStack>
-    <Wrap    spacing={5} alignSelf='center' justify='center' margin='auto'
+    <Wrap  spacing={5} alignSelf='center' justify='center' margin='auto'
   >
   
     {links.map((link) => (
@@ -216,6 +218,7 @@ Please select. </Text> </VStack>
       </Drawer>
     </>
     </>
+    </Stack>
   )
 }
 
