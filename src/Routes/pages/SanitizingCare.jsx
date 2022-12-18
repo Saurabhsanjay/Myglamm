@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { FiHeart } from 'react-icons/fi';
 const SanitizingCare = () => {
   const { AllData,shortString,shortStringdesc,random,randomforrating1,randomforrating2,handleCart } = useContext(AppContext)
+  
   return (<>
   <HStack padding='10px 20px' justify='center'>
 

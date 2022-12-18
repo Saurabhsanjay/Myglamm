@@ -67,9 +67,9 @@ const Makeup = () => {
                     <Text py={2} fontWeight='medium'>₹ {el.selection4}</Text>
                 </Box>
                 <Spacer/>
-                <Box py={3} px='2' display='flex' w={'full'}  >
+                <Box zIndex={9999} py={3} px='2' display='flex' w={'full'}  >
                 <FiHeart fontSize={'1.3rem'} style={{ marginRight: "5px" }} /><Spacer />
-                <Button zIndex={999} bg={'black'} color='white' fontWeight='medium' size={{ base: "xs", sm: "sm" }} onClick={()=>handleCart(el)} ><HiOutlineShoppingBag fontSize={'1.3rem'} style={{ marginRight: "5px" }} /> Add To Cart</Button> 
+                <Button  bg={'black'} color='white' fontWeight='medium' size={{ base: "xs", sm: "sm" }} onClick={()=>handleCart(el)} ><HiOutlineShoppingBag fontSize={'1.3rem'} style={{ marginRight: "5px" }} /> Add To Cart</Button> 
                 </Box>
             </Box>
             )
