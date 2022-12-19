@@ -1,4 +1,4 @@
-<h1 align="center">MYglamm Clone</h1>
+<h1 align="center">MyGlamm Clone</h1>
 
 <h3 align="center">It's a MERN Stack E-commerce web application with all the major functionalities</h3>
 
@@ -58,7 +58,7 @@
 </p>
 
 
-MyGlamm Clone is MERN Stack e-commerce web application that allows you to buy Cosemetics  online with payment gateway integration. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.
+MyGlamm Clone is MERN Stack e-commerce web application that allows you to buy Cosmetics  online with payment gateway integration. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.
 
 
 
