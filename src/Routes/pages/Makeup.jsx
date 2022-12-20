@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { FiHeart } from 'react-icons/fi';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useMemo } from 'react';
 
 
 const Makeup = () => {
@@ -14,8 +15,30 @@ const Makeup = () => {
     useEffect(()=>{
         setTimeout(() => {
             setLoading(false)
+            generateRandomNumbers()
         }, 2000);
     },[])
+ 
+  
+
+    
+
+    function generateRandomNumbers  (min, max, times)  {
+        const randoms = []
+    
+        for (let i = 0; i < times; i++) {
+            randoms.push(Math.floor(Math.random() * (max - min) + min))
+        }
+         
+        return randoms
+    }
+    
+    const MeMoJi=useMemo(()=>generateRandomNumbers(1,4,30),[])
+    const MeMoJi1=useMemo(()=>generateRandomNumbers(1,9,30),[])
+    const MeMoJi2=useMemo(()=>generateRandomNumbers(1000,5000,30),[])
+    // Later call it like so
+   
+    
     if(loading){
         return(
             <div style={{display:"grid",placeItems:"center",height:"500px"}}>
@@ -23,25 +46,6 @@ const Makeup = () => {
             </div>
             )
     }
-    
-   
-
-    
-
-    const generateRandomNumbers = (min, max, times) => {
-        const randoms = []
-    
-        for (let i = 0; i < times; i++) {
-            randoms.push(Math.floor(Math.random() * (max - min) + min))
-        }
-    
-        return randoms
-    }
-    
-    // Later call it like so
-   
-    
-    
     
 
 
@@ -63,7 +67,7 @@ const Makeup = () => {
                     <Text as='b'>{shortString(el.selection2)}</Text>
                     <Text pt={2} color='gray.500'>{shortStringdesc(el.selection3)}</Text>
                    
-                    <Text pt={1} pb='2' color='gray.500'> <span style={{ color: "red" }}>★</span>  {generateRandomNumbers(1, 4, 30)[i]}.{generateRandomNumbers(1, 9, 30)[i]} | {generateRandomNumbers(1000, 5000, 30)[i]} reviews</Text>
+                    <Text pt={1} pb='2' color='gray.500'> <span style={{ color: "red" }}>★</span>  {MeMoJi[i]}.{MeMoJi1[i]} | {MeMoJi2[i]} reviews</Text>
                     <Text py={2} fontWeight='medium'>₹ {el.selection4}</Text>
                 </Box>
                 <Spacer/>
