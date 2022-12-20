@@ -12,7 +12,7 @@ const Shampoo = () => {
       <Text bgClip='text'
   bgGradient='linear(to-l, #7928CA, #FF0080)' alignSelf='center' fontSize='2xl'  as='b'>SHAMPOO & CONDITIONERS</Text>
   </HStack>
-  <SimpleGrid px={{base:2,sm:4}} columns={{ base: 2,sm:3,md:5 }}  gap={2}>
+  <SimpleGrid px={{base:2,sm:4}} columns={{ base: 2,sm:3,md:4}}  gap={2}>
         {
                 AllData.Shampoo.map((el) => {
                     return (
