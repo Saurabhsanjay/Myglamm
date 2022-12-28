@@ -61,6 +61,8 @@ const AllRoutes = () => {
         <SingleProductPage/>
         </PrivateRoute>
         }/>
+
+        
         <Route path="*" element={<PageNotFound />} />
         <Route path="/login" element={<Login/>} />
     </Routes>

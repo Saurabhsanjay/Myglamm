@@ -4,7 +4,8 @@ import { Navigate } from "react-router-dom";
 import AppContext from "../../context/Appcontext";
 
 function PrivateRoute({ children }) {
-  const { isAuth } = useContext(AppContext)
+  // const { isAuth } = useContext(AppContext)
+  const isAuth  = true
 
   if (!isAuth) {
     return <Navigate to="/login" />;

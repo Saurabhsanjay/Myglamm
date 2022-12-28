@@ -7,7 +7,11 @@ import { Badge, Button, HStack, Image, Text, useToast, VStack,useDisclosure,  Dr
     DrawerCloseButton,
     SimpleGrid,
     Box,
-    Flex, } from '@chakra-ui/react'
+    Flex,
+    Divider,
+    Center,
+    IconButton,
+    ButtonGroup, } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { BsBag } from 'react-icons/bs'
 import { NavLink, useParams } from 'react-router-dom';
@@ -15,7 +19,8 @@ import AppContext from '../../context/Appcontext';
 import { AiOutlineStar } from 'react-icons/ai';
 import { AddIcon, ArrowRightIcon, MinusIcon, StarIcon } from '@chakra-ui/icons';
 import Scrollbars from 'react-custom-scrollbars-2';
-const AllData=[
+const AllData=
+[
     
     {
         id:1,
@@ -1612,39 +1617,53 @@ const SingleProductPage = () => {
     }
   return (
     <>
+    <SimpleGrid columns={{base:1,sm:2}}  mx={{base:0,md:40}}  padding={{base:'20px 20px'}}>
+    {/* for image start */}
+        <Box  >
+   <Image  src="https://files.myglamm.com/site-images/400x400/Eclairs-(1).jpg" alt='eror'/>
+        </Box>
+        {/* for image end */}
+       
+       {/* for product info start */}
+        <Box py={5} >
+        <Text as='b' fontSize={{base:'20px',md:"xl"}}>Flat Foundation Brush"</Text>
+        <Text >Moisturising Matte Lipstick Flat Foundation Brush"</Text>
+        
+        {/* for button & ratings  */}
+        <Box w={{base:'100%',md:"50%"}} p={2} mt={{base:"6",md:7}} border='2px solid #f3f3f3'>
+         <Box py={3}  display={'flex'} justifyContent={'space-between'} borderBottom='2px solid #f3f3f3'>
+            <Text>Price</Text>
+            <Text as='b'>Rs 400</Text>
+         </Box>
+         <Box  py={3} display={'flex'} justifyContent={'space-between'} borderBottom='2px solid #f3f3f3'> 
+         <Text>Status</Text>
+            <Text as='b'>In Stock</Text>
+            </Box>
+         <Box  py={3} display={'flex'} justifyContent={'space-between'} borderBottom='2px solid #f3f3f3'>
+         <Text>Reviews</Text>
+            <Text as='b'>1005 Reviews</Text>
+         </Box>
+         <Box py={3}  display={'flex'} justifyContent={'space-between'} borderBottom='2px solid #f3f3f3'>
+            <Text>Quantity</Text>
+            <Text>
+            <ButtonGroup size='sm' isAttached variant='outline'>
+  <IconButton aria-label='Add to friends' icon={<MinusIcon />} />
+  <Button>2</Button>
+            <IconButton aria-label='Add to friends' icon={<AddIcon />} />
+</ButtonGroup>
 
-   <HStack boxShadow='md'  rounded='lg' p={{base:35,md:70,}}  margin='auto' alignContent='center' alignItems='center' justifyItems='center' >
-   <HStack p={5} boxShadow='2xl'  rounded='md'>
-    <VStack>
-        <Image w='450px' h='400px' src={userDetails[0].image} alt='err'/>
-    </VStack>
-    <VStack spacing={5} padding='30px' textAlign='left' alignContent='flex-start' alignItems='flex-start' justifyItems='flex-start' justifyContent='flex-start' >
-        <Text fontWeight='600'>{userDetails[0].selection2}</Text>
-        <HStack>
-        <Text fontWeight='500'>   
-            
-              <StarIcon w={4} h={4} mr={2} mb={2} color="teal.500"/>
-             4.8 | 461 reviews</Text> </HStack>
-        <Text fontWeight='500'>₹ {userDetails[0].selection4}</Text>
-        <Text>(MRP incl. of all taxes)</Text>
-        <Button
-        
-          onClick={() => {
-           onOpen()
-            handleCart(userDetails[0])
-          }}
-        
-        //    onClick={()=>handleCart(userDetails[0])}
-            colorScheme='blue'> <BsBag  /> ADD TO BAG</Button>
-        <Badge  borderRadius='full' p={2} px='2' colorScheme='teal'>You will receive cashback worth ₹76 as myglammPOINTS on this purchase</Badge>
-    </VStack>
-   </HStack>
-   </HStack>
+            </Text>
+         </Box>
+         <Box><Button w={'full'} bgColor={'black'} borderRadius={0} _hover={{color:"black",bgColor:"pink"}} color='white'>Add To Cart</Button></Box>
+        </Box>
+        {/* for button & ratings */}
+        </Box>
+        {/* for product info end */}
+    </SimpleGrid>
+  
    <>
-      {/* <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-        Open
-      </Button> */}
-      <Drawer
+     
+      {/* <Drawer
         isOpen={isOpen}
         placement='right'
         onClose={onClose}
@@ -1705,7 +1724,37 @@ Please select. </Text> </VStack>
             </NavLink>
           </DrawerFooter>
         </DrawerContent>
-      </Drawer>
+      </Drawer> */}
+      {/* <HStack boxShadow='md'   rounded='lg' p={{base:35,md:70,}}  margin='auto' alignContent='center' alignItems='center' justifyItems='center' >
+   <Flex p={5} spacing='10'  w='100%' justifyContent={'center'}   rounded='md'>
+    <VStack  borderBottom='4px solid pink'  >
+        <Image w='450px' h='400px' src={userDetails[0].image} alt='err'/>
+    </VStack>
+    <Center height='100%'>
+  <Divider orientation='vertical' />
+</Center>
+    <VStack   borderRight='4px solid pink' minH='100%' spacing={5} padding='30px' textAlign='left' alignContent='flex-start' alignItems='flex-start' justifyItems='flex-start' justifyContent='flex-start' >
+        <Text fontWeight='600'>{userDetails[0].selection2}</Text>
+        <HStack>
+        <Text fontWeight='500'>   
+            
+              <StarIcon w={4} h={4} mr={2} mb={2} color="teal.500"/>
+             4.8 | 461 reviews</Text> </HStack>
+        <Text fontWeight='500'>₹ {userDetails[0].selection4}</Text>
+        <Text>(MRP incl. of all taxes)</Text>
+        <Button
+        
+          onClick={() => {
+           onOpen()
+            handleCart(userDetails[0])
+          }}
+        
+        //    onClick={()=>handleCart(userDetails[0])}
+            colorScheme='blue'> <BsBag  /> ADD TO BAG</Button>
+        <Badge  borderRadius='full' p={2} px='2' colorScheme='teal'>You will receive cashback worth ₹76 as myglammPOINTS on this purchase</Badge>
+    </VStack>
+   </Flex>
+   </HStack> */}
     </>
     </>
   )

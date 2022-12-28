@@ -1568,7 +1568,7 @@ const AllData={
         const toast = useToast()
 
         const LoginUser = (name)=>{
-            console.log("APP CONTEXC")
+            console.log("APP CONTEXT")
             setIsAuth(true)
             setUser(name)
         }
