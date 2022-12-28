@@ -11,6 +11,7 @@ const App = () => {
   return (
     <Stack>
       <Navbar/>
+      
       <NavMobile/>
     <AllRoutes/>
     <Divider/>
