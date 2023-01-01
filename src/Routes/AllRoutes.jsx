@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import AdminUI from './pages/AdminUI'
 import Collection from './pages/Collection'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -65,6 +66,7 @@ const AllRoutes = () => {
         
         <Route path="*" element={<PageNotFound />} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/admin" element={<AdminUI/>} />
     </Routes>
       
     </div>

@@ -1617,20 +1617,20 @@ const SingleProductPage = () => {
     }
   return (
     <>
-    <SimpleGrid columns={{base:1,sm:2}}  mx={{base:0,md:40}}  padding={{base:'20px 20px'}}>
+    <SimpleGrid columns={{base:1,sm:1,lg:2}}    >
     {/* for image start */}
-        <Box  >
+        <Box margin={{base:"auto"}} objectFit={'cover'}>
    <Image  src="https://files.myglamm.com/site-images/400x400/Eclairs-(1).jpg" alt='eror'/>
         </Box>
         {/* for image end */}
        
        {/* for product info start */}
-        <Box py={5} >
-        <Text as='b' fontSize={{base:'20px',md:"xl"}}>Flat Foundation Brush"</Text>
-        <Text >Moisturising Matte Lipstick Flat Foundation Brush"</Text>
+        <Box  py={5} px={{base:2,sm:3,md:5}}>
+        <Text  as='b' fontSize={{base:'20px',md:"xl"}}>Flat Foundation Brush</Text>
+        <Text >Moisturising Matte Lipstick Flat Foundation Brush</Text>
         
         {/* for button & ratings  */}
-        <Box w={{base:'100%',md:"50%"}} p={2} mt={{base:"6",md:7}} border='2px solid #f3f3f3'>
+        <Box  w={{base:'100%',md:"100%",lg:"50%"}} p={2} mt={{base:"6",md:7}} border='2px solid #f3f3f3'>
          <Box py={3}  display={'flex'} justifyContent={'space-between'} borderBottom='2px solid #f3f3f3'>
             <Text>Price</Text>
             <Text as='b'>Rs 400</Text>

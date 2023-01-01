@@ -1,6 +1,6 @@
 import { CircularProgress, useToast } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
-
+import { useMemo } from 'react';
 export const AppContext = createContext()
 const AllData={
     "Makeup":[
@@ -1672,7 +1672,20 @@ const AllData={
     console.log(count);
 }
 }
+function generateRandomNumbers  (min, max, times)  {
+    const randoms = []
 
+    for (let i = 0; i < times; i++) {
+        randoms.push(Math.floor(Math.random() * (max - min) + min))
+    }
+     
+    return randoms
+}
+
+const MeMoJi=useMemo(()=>generateRandomNumbers(1,4,30),[])
+const MeMoJi1=useMemo(()=>generateRandomNumbers(1,9,30),[])
+const MeMoJi2=useMemo(()=>generateRandomNumbers(1000,5000,30),[])
+// Later call it like so
       
 
         return (
@@ -1682,7 +1695,9 @@ const AllData={
           quantity,
           setCartData,
           cartData,
-          handleCart,userName,
+          handleCart,userName,MeMoJi,
+MeMoJi1,
+MeMoJi2,
           TotalPrice ,LoginUser,shortString,shortStringdesc,random,randomforrating1,randomforrating2,randomnum,count,
 LogOutUser}} >
       

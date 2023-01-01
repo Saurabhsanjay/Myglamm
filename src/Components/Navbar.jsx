@@ -78,7 +78,7 @@ const toast = useToast()
 
   }
   return (
-    <Stack display={{base:"none",md:"block"}}>
+    <Stack display={{base:"none",lg:"block"}}>
     <>
     <HStack padding='10px 30px' bgColor='#fee8e8'>
         <Text onClick={()=> Navigate('/haircare')}  marginRight='20px'  fontSize='xs' fontWeight="500">Pick any product ar Rs 199</Text>

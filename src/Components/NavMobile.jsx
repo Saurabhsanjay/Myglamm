@@ -34,7 +34,7 @@ export default function NavMobile() {
   const toast = useToast()
 
   return (
-    <HStack position={'sticky'} zIndex={1}  top={0} shadow={'md'} display={{ base: "grid", md: "none" }}>
+    <HStack position={'sticky'} zIndex={1}  top={0} shadow={'md'} display={{ base: "grid", lg: "none" }}>
       <HStack  h={16} px={3} bgColor={'white'} justifyContent={'space-between'} >
 
        <Box><HamburgerIcon cursor={'pointer'} colorScheme='gray' size={'sm'} onClick={onOpen} fontSize={'1.5rem'} /></Box> 

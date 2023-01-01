@@ -10,13 +10,13 @@ import { useMemo } from 'react';
 
 
 const Makeup = () => {
-    const { AllData,shortString,shortStringdesc,random,randomforrating1,randomforrating2,handleCart } = useContext(AppContext)
+    const { AllData,shortString,shortStringdesc,MeMoJi,MeMoJi1,MeMoJi2 } = useContext(AppContext)
     let [loading, setLoading] = useState(true);
     const Navigate=useNavigate()
     useEffect(()=>{
         setTimeout(() => {
             setLoading(false)
-            generateRandomNumbers()
+            // generateRandomNumbers()
         }, 2000);
     },[])
  
@@ -24,20 +24,7 @@ const Makeup = () => {
 
     
 
-    function generateRandomNumbers  (min, max, times)  {
-        const randoms = []
-    
-        for (let i = 0; i < times; i++) {
-            randoms.push(Math.floor(Math.random() * (max - min) + min))
-        }
-         
-        return randoms
-    }
-    
-    const MeMoJi=useMemo(()=>generateRandomNumbers(1,4,30),[])
-    const MeMoJi1=useMemo(()=>generateRandomNumbers(1,9,30),[])
-    const MeMoJi2=useMemo(()=>generateRandomNumbers(1000,5000,30),[])
-    // Later call it like so
+
    
     
     if(loading){
@@ -50,7 +37,8 @@ const Makeup = () => {
     
 
 
-   return (<VStack >
+   return (
+   <VStack >
         <HStack padding='10px 20px' justify='center'>
 
             <Text bgClip='text'
