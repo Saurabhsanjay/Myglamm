@@ -1564,9 +1564,18 @@ const AllData={
         const [cartData, setCartData] = useState([]);
         const [TotalPrice, setTotalPrice] = useState(0);
         const[quantity,settotalQuntity]=useState(0)
-
+const [productsData,setProductsData]=useState([])
         const toast = useToast()
-
+        const getList=()=>{
+            fetch("https://paradise-api.onrender.com/auth/getall").
+            then((res)=>res.json()).
+            then((res)=>{console.log(res.products[0].SkinCare);setProductsData(res)}).
+            catch((err)=>console.error(err))
+        }
+    
+        useEffect(()=>{
+            getList()
+        },[])
         const LoginUser = (name)=>{
             console.log("APP CONTEXT")
             setIsAuth(true)
@@ -1686,7 +1695,8 @@ const MeMoJi=useMemo(()=>generateRandomNumbers(1,4,30),[])
 const MeMoJi1=useMemo(()=>generateRandomNumbers(1,9,30),[])
 const MeMoJi2=useMemo(()=>generateRandomNumbers(1000,5000,30),[])
 // Later call it like so
-      
+        
+
 
         return (
           <AppContext.Provider value={{ AllData,
@@ -1697,7 +1707,7 @@ const MeMoJi2=useMemo(()=>generateRandomNumbers(1000,5000,30),[])
           cartData,
           handleCart,userName,MeMoJi,
 MeMoJi1,
-MeMoJi2,
+MeMoJi2,productsData,
           TotalPrice ,LoginUser,shortString,shortStringdesc,random,randomforrating1,randomforrating2,randomnum,count,
 LogOutUser}} >
       
