@@ -28,7 +28,7 @@ const SanitizingCare = () => {
         columns={{ base: 2, sm: 3, md: 4 }}
         spacing={{ base: 0, md: 3, lg: 5 }}
       >
-        {AllData.SanitizingCare.map((el, i) => {
+        {productsData.products[0]?.SanitizingCare.map((el, i) => {
           return (
             <Box
               cursor={"pointer"}
