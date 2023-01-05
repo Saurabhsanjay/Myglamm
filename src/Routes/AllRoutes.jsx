@@ -57,7 +57,7 @@ const AllRoutes = () => {
         <Route path='/offers' element={<h1>home</h1>}/>
         <Route path='/payementform' element={<PaymentForm/>}/>
         <Route path='/ordersuccessfull' element={<OrderSuccessfull/>}/>
-        <Route path='/singleproductpage/:id' element={
+        <Route path='/singleproductpage/:type/:id' element={
           <PrivateRoute>
         <SingleProductPage/>
         </PrivateRoute>

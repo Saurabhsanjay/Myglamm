@@ -1561,21 +1561,25 @@ const AllData={
     export const AppContextProvider = ({ children }) => {
         const [isAuth, setIsAuth] = useState(false);
         const[userName,setUser]=useState('')
+       
         const [cartData, setCartData] = useState([]);
         const [TotalPrice, setTotalPrice] = useState(0);
         const[quantity,settotalQuntity]=useState(0)
 const [productsData,setProductsData]=useState([])
         const toast = useToast()
         const getList=()=>{
-            fetch("https://paradise-api.onrender.com/auth/getall").
+            fetch("https://paradise-api.onrender.com/rest/products").
             then((res)=>res.json()).
-            then((res)=>{console.log(res.products[0].SkinCare);setProductsData(res)}).
+            then((res)=>{console.log(res);setProductsData(res)}).
             catch((err)=>console.error(err))
         }
     
         useEffect(()=>{
             getList()
+           
         },[])
+
+       
         const LoginUser = (name)=>{
             console.log("APP CONTEXT")
             setIsAuth(true)

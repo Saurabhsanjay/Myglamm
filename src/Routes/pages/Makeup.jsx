@@ -11,22 +11,18 @@ import { useState } from 'react';
 
 const Makeup = () => {
     const { AllData,shortString,shortStringdesc,MeMoJi,MeMoJi1,MeMoJi2,productsData } = useContext(AppContext)
-    let [loading, setLoading] = useState(true);
     const Navigate=useNavigate()
+    
+    let [loading, setLoading] = useState(true);
+  
+
     useEffect(()=>{
         setTimeout(() => {
             setLoading(false)
             // generateRandomNumbers()
-        }, 2000);
+        }, 1000);
     },[])
- 
-  
 
-    
-
-
-   
-    
     if(loading){
         return(
             <div style={{display:"grid",placeItems:"center",height:"500px"}}>
@@ -47,9 +43,9 @@ const Makeup = () => {
         
         <SimpleGrid p={{base:0,sm:4}} w={{base:"100%",lg:"90%"}}   columns={{ base: 2,sm:3,md:4}}   spacing={{base:0,md:3,lg:5}}>
         {
-            productsData.products[0].Makeup.map((el,i) => {
+            productsData.products[0]?.Makeup?.map((el,i) => {
                     return (
-            <Box cursor={'pointer'} onClick={()=>Navigate(`/singleproductpage/${el.id}`)} key={i} border='1px solid #eeee'  >
+            <Box cursor={'pointer'} onClick={()=>Navigate(`/singleproductpage/Makeup/${el.id}`)} key={i} border='1px solid #eeee'  >
                 <Box px='2' borderRadius={2} >
                     <Image borderRadius={5} py={1} width='100%' src={el.image} /></Box>
                 <Box px='2' >
