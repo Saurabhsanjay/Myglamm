@@ -20,6 +20,7 @@ import {   Drawer,
   } from '@chakra-ui/react'
 import Scrollbars from 'react-custom-scrollbars-2';
 import logoparadise from './badges/LOGOPARA.png'
+import Login from '../Routes/pages/Login';
 const Navbar = () => {
   
   const{   handleRemove,
@@ -105,7 +106,7 @@ const toast = useToast()
 
     <BsBag fontSize='20px' onClick={onOpen}/> <Text borderRadius='full' color='white' p={1} bgColor='black'>{quantity}</Text>
     
-    <Text><CgProfile fontSize='20px' onClick={()=>Navigate('/login')}/></Text>
+    <Text><Login  /></Text>
   
  
   {isAuth ? <>

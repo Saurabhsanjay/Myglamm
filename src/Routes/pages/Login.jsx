@@ -1,183 +1,193 @@
-import { Button, ButtonGroup, Checkbox, Divider, Flex, FormControl, FormLabel, Highlight, HStack, IconButton, Image, Input, Spacer, Spinner, Stack, Text, useToast, VStack } from '@chakra-ui/react'
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import AppContext from '../../context/Appcontext';
-// import Loader from '../components/SmallComponents/Loader';
-// import { AuthContext } from '../Context/AuthContext';
-
-
-const Login = () => {
-
-const {LoginUser,
-LogOutUser }=useContext(AppContext)
-  // const {LoginUser} = useContext(AuthContext)
-
-  const [name,SetName] = useState("")
-
-  const [Loading, setLoading] = useState(false);
-  const navigatekaro = useNavigate()
-
-
-  const toast = useToast()
-
-  const handleClick = () => {
-
-    setLoading(true);
-
-    setTimeout(() => {
-
-       
-      prompt("ENTER OTP")  
-     
-
-      LoginUser(name)
-      // LoginUser(name)
-     
-      navigatekaro("/");
-    }, 2000);
-  };
-
-
-
-
-////////////////////////LOADER //////////////////////////////
-// is Loading   // 
-const [isLoading, setIsLoading] = useState(true);
-
-setTimeout(() => {
-setIsLoading(false)
- 
-}, 1500);
- 
-
-// console.log(data)
-
-if(isLoading){
-
- return (  
-    // <Loader />
-    <h1>b</h1>
-   ) 
-
-}
-
-
-////////////////////////LOADER //////////////////////////////
-
-
-
+import { ViewOffIcon ,ViewIcon} from '@chakra-ui/icons';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  Button,
+  Link,Stack,Text,Input,FormControl,FormLabel,Box,InputGroup,
+  ModalBody,InputRightElement,Flex,HStack,Heading,
+  ModalCloseButton,
+  useDisclosure,
+  Image,
+  VStack,
+} from '@chakra-ui/react'
+import { useState } from 'react';
+import logo from '../../Components/badges/LOGOPARA.png'
+function Login() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginmodal,setLoginModal]=useState(false);
+  const [signupmodal,setSignupModal]=useState(true)
   return (
-    <HStack  w="full" >
-
-        <VStack spacing={5} w="100vh" padding={{base:"20px",md:"50px 100px"}}  height="100vh"  >
-
-            <Stack w="full"  textAlign="left">
-            <Text marginTop={50} fontSize="xl" fontWeight="semibold">
-            Sign IN
-            </Text>
-
-            <Text fontSize="sm" >
-            <Highlight query='Sign Up' styles={{ color: 'blue', textDecoration:"underline" }}>
-            Need a MyGlamm account? Sign Up
-            </Highlight>
-            
-            </Text>
-            </Stack>
-
-            <Stack spacing={5}  w="full" >
-            <ButtonGroup size='md' isAttached variant='outline'>
-                  <IconButton aria-label='Add to friends' ><Image src='https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png' 
-                   w={25} /></IconButton>
-               <Button w="full" colorScheme="messenger" variant='solid'>
-                   Sign In With Google
-                </Button>
-            
-            </ButtonGroup>
-
-            <ButtonGroup size='md' isAttached variant='outline'>
-                  <IconButton aria-label='Add to friends' ><Image src='https://media.istockphoto.com/vectors/lock-icon-vector-id936681148?k=20&m=936681148&s=612x612&w=0&h=j6fxNWrJ09iE7khUsDWetKn_PwWydgIS0yFJBEonGow=' 
-                   w={25} /></IconButton>
-               <Button w="full" bg="blackAlpha.600" color="white" variant='solid'>
-               Sign In With Email
-                </Button>
-            
-            </ButtonGroup>
-            </Stack>
-            
-            <HStack spacing={5}  w="full" >
-
-                <Divider minW={1} />
-                <Text w="full" fontSize="12px" color="gray.600" >  Or, sign in with email</Text>
-                <Divider minW={1} />
-
-
-            </HStack>
-
-            <Stack spacing={5}  w="full" >
-            <FormControl>
-              <FormLabel>Email UserName</FormLabel>
-              <Input onChange={(e)=>SetName(e.target.value)} value={name} type='name' placeholder='Enter Your UserName' />
-             
+    <>
+      <Button size={{base:'md',md:"sm"}} borderRadius={0} onClick={onOpen}>Login</Button>
+  {signupmodal &&
+      <Modal isOpen={isOpen}  onClose={onClose} size={'sm'}>
+        <ModalOverlay />
+        <ModalContent>
+          
+          <ModalCloseButton />
+          <ModalBody >
+             <Flex
+      mt={5}
+      align={'top'}
+      justify={'center'}
+    >
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={0} px={0}>
+        <Stack align={'center'}>
+          <Heading fontSize={'2xl'} textAlign={'center'}>
+            <Image src={logo} w='200px' alt="Paradise"/>
+          </Heading>
+          <Text fontSize={'sm'} color={'gray.600'}>
+          Get 15% Good Points back on every order
+          </Text>
+        </Stack>
+        <Box
+          rounded={'lg'}
+         
+   
+          p={1}>
+          <Stack spacing={4}>
+          <FormControl id="name" isRequired>
+              <FormLabel>Name</FormLabel>
+              <Input type="name" />
             </FormControl>
-
-            <FormControl>
-              <FormLabel>Email Password</FormLabel>
-              <Input type='password' placeholder='Enter Your Password' />
-             
+            <FormControl id="email" isRequired>
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" />
             </FormControl>
-
-            <Checkbox defaultChecked>Keep Me Logged in</Checkbox>
-            </Stack>
-
-            <Stack textAlign="left" spacing={5}  w="full" >
-
-             <Text fontSize="15px" color="blue" as="u" >Forgot Password</Text>
-             <Button onClick={handleClick} w="full" colorScheme="facebook" variant='solid'>
-
-             {!Loading && "Sign IN"}
-            {Loading && (
-              <Spinner
-                thickness="4px"
-                speed="0.55s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="lg"
-              />
-            )}
+            <FormControl id="password" isRequired>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Stack spacing={10} pt={2}>
+              <Button borderRadius={0}
+                loadingText="Submitting"
+                size="md"
+                bg={'#f76f73'}
+                color={'white'}
+                _hover={{
+                  bg: 'pink.500',
                   
-                </Button>
-
+                }}
+                fontWeight="light"
+                >
+                Sign up
+              </Button>
             </Stack>
-            
+            <Stack pt={6}>
+              <Text align={'center'}>
+                Already a user? <Link onClick={()=>{setLoginModal(true);
+                setSignupModal(false)}} color={'#f76f73'}>Login</Link>
+              </Text>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+          </ModalBody>
 
-        </VStack>
+         
+        </ModalContent>
+      </Modal>}
 
+     {loginmodal &&
+      <Modal isOpen={isOpen}  onClose={onClose} size={'sm'}>
+        <ModalOverlay />
+        <ModalContent>
+          
+          <ModalCloseButton />
+          <ModalBody   >
+             <Flex 
+      mt={5}
+      align={'top'}
+      justify={'center'}
+    >
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={0} px={0}>
+        <Stack align={'center'}>
+          <Heading fontSize={'2xl'} textAlign={'center'}>
+            <Image src={logo} w='200px' alt="Paradise"/>
+          </Heading>
+          <Text fontSize={'sm'} color={'gray.600'}>
+          Get 15% Good Points back on every order
+          </Text>
+        </Stack>
+        <Box
+          rounded={'lg'}
+         
+   
+          p={1}>
+          <Stack spacing={4}>
+         
+            <FormControl id="email" isRequired>
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" />
+            </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Stack spacing={10} pt={2}>
+              <Button borderRadius={0}
+                loadingText="Submitting"
+                size="md"
+                bg={'#f76f73'}
+                color={'white'}
+                _hover={{
+                  bg: 'pink.500',
+                  
+                }}
+                fontWeight="light"
+                >
+               Log In
+              </Button>
+            </Stack>
+            <VStack  pt={2}>
+              <Text align={'center'} textTransform="capitalize">
+                You Must be SignUp Before Login..
+              </Text>
+              <br/>
+              <Text p={0}>
 
-        <VStack  textAlign="left" w="full" padding={100} height="100vh" bg="#ebeef9" display={{base:"none", md:"block"}}  >
-           
-            <Text marginTop={50} maxWidth={{base:"100%",md:"60%",lg:"60%" }} >
-            MYGLAMM REWARDS
-            </Text>
+                Go To <Link color={'#f76f73'} onClick={()=>{
+                  setLoginModal(false);
+                  setSignupModal(true);
+                }}>Signup</Link>
+              </Text>
+            </VStack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+          </ModalBody>
 
-            <Image width="500px" src='https://rozmoj.com/wp-content/uploads/2022/06/MyGlamm-Refer-Earn-Free-Makeup-Kits-4-1024x576.webp' />
-            <Text  width="full"
-            fontSize="18px" fontWeight="semibold" >
-             Read More about our Rewards
-            </Text>
-            <Text  width="full"
-            fontSize="15px" fontWeight="thin" maxWidth={{base:"100%",md:"60%",lg:"60%" }} >
-            MyGlamm Reward program is one way in which MyGlamm endeavours to reward and thank loyal customers individuals
-            </Text>
-
-            <Button onClick={()=>navigatekaro('/rewards')}  colorScheme="messenger" variant='outline'>
-             Explore Rewards
-           </Button>
-        </VStack>
-
-
-
-    </HStack>
+         
+        </ModalContent>
+      </Modal>
+     }</>
   )
-}
+} 
 
-export default Login
+export default Login;

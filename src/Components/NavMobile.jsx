@@ -18,6 +18,7 @@ import logo from './badges/LOGOPARA.png'
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import AppContext from '../context/Appcontext';
 import { useContext } from 'react';
+import Login from '../Routes/pages/Login';
 
 export default function NavMobile() {
   const { handleRemove,
@@ -125,11 +126,11 @@ export default function NavMobile() {
               </Accordion>
             </DrawerBody>
 
-            <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme='blue'>Save</Button>
+            <DrawerFooter  justifyContent={'center'} alignItems='center'>
+            <HStack >
+              <Login/>
+
+            </HStack>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
