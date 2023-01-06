@@ -30,7 +30,8 @@ export default function NavMobile() {
     userName,
     LogOutUser, quantity,
     TotalPrice } = useContext(AppContext)
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen,onClose:close } = useDisclosure()
+  
   const btnRef = React.useRef()
   const toast = useToast()
 
@@ -42,13 +43,14 @@ export default function NavMobile() {
         <Drawer  size={'xs'}
           isOpen={isOpen}
           placement='left'
-          onClose={onClose}
+          onClose={close}
           finalFocusRef={btnRef}
         >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader><Image w={'50%'} src='https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg' /></DrawerHeader>
+            <DrawerHeader margin={'auto'} justifyContent='center'><Image w={'50%'}
+             src={logo} /></DrawerHeader>
 
             <DrawerBody >
               <Accordion allowToggle>
@@ -127,15 +129,15 @@ export default function NavMobile() {
             </DrawerBody>
 
             <DrawerFooter  justifyContent={'center'} alignItems='center'>
-            <HStack >
-              <Login/>
+            <HStack  >
+           
 
             </HStack>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
         <Image w={110} src={logo} alt={'err'} />
-        <HStack><HiOutlineShoppingBag size={'1.5rem'} /><span
+        <HStack> <Login/><HiOutlineShoppingBag size={'1.5rem'} />     <span
          style={{ height: "20px", width: "20px", backgroundColor:
           "black", borderRadius: "50%", color: "white", textAlign: 
           "center", marginLeft: "-3px", marginBottom: "0.7rem" }} class="dot">{quantity}</span></HStack>
