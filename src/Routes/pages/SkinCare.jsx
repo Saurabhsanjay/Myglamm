@@ -43,7 +43,7 @@ useEffect(()=>{
             columns={{ base: 2, sm: 3, md: 4 }}
             spacing={{ base: 0, md: 3, lg: 5 }}
           >
-             {productsData.products[0]?.SkinCare?.map((el,i) => {
+             {productsData?.products[0]?.SkinCare?.map((el,i) => {
               return (
                 <Box cursor={'pointer'} onClick={()=>Navigate(`/singleproductpage/SkinCare/${el.id}`)} key={i} border='1px solid #eeee'  >
                 <Box px='2' borderRadius={2} >

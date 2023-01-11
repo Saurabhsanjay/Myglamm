@@ -1,9 +1,17 @@
 import { Box, Grid, GridItem, HStack, Image, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AppContext from '../../context/Appcontext'
 import Autoplay from './Autoplay'
-
 const Home = () => {
+  const {getCartData}=useContext(AppContext)
+
+  
+  useEffect(()=>{
+   
+    getCartData();
+  },[])
+  // console.log(cartData.length,"fromhome")
   const Navigate=useNavigate()
   return (
     <VStack bgColor='#f4f4f4' maxW='fit-content'>

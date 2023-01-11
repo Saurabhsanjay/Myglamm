@@ -75,7 +75,7 @@ const Navigate=useNavigate()
               isClosable: true,
               duration: 2000,
             });
-            localStorage.setItem("user", JSON.stringify(res.user));
+            // localStorage.setItem("user", JSON.stringify(res.id));
             setLoginModal(true)
             setSignupModal(false)
           })

@@ -13,25 +13,40 @@ import {
   AccordionIcon, HStack, Image, useDisclosure, Button, Box, Text, Spacer, Stack, useToast
 } from '@chakra-ui/react'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './badges/LOGOPARA.png'
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import AppContext from '../context/Appcontext';
 import { useContext } from 'react';
 import Login from '../Routes/pages/Login';
+import CartDrawer from '../Routes/pages/CartDrawer';
 
 export default function NavMobile() {
   const { handleRemove,
     handleChnage,
 
-    setCartData,
-    cartData,
+  
     handleCart, isAuth,
     userName,
     LogOutUser, quantity,
     TotalPrice } = useContext(AppContext)
   const { isOpen, onOpen,onClose:close } = useDisclosure()
+  const[cartData,setCartData]=useState([]);
+const [loading,setLoading]=useState(true)
+  const getCartData = () => {
+    setLoading(true);
+    fetch("https://paradise-api.onrender.com/rest/getallcart")
+      .then((res) => res.json())
+      .then((res) =>{setCartData(res.products)
+    console.log(res,"Resres")
+    
+    }).finally(() => setLoading(false));
+  };
   
+    useEffect(()=>{
+    
+      //  getCartData();
+    },[])
   const btnRef = React.useRef()
   const toast = useToast()
 
@@ -137,10 +152,7 @@ export default function NavMobile() {
           </DrawerContent>
         </Drawer>
         <Image w={110} src={logo} alt={'err'} />
-        <HStack> <Login/><HiOutlineShoppingBag size={'1.5rem'} />     <span
-         style={{ height: "20px", width: "20px", backgroundColor:
-          "black", borderRadius: "50%", color: "white", textAlign: 
-          "center", marginLeft: "-3px", marginBottom: "0.7rem" }} class="dot">{quantity}</span></HStack>
+        <HStack> <Login/> <CartDrawer getCartData={getCartData} loading={loading} cartData={cartData}/></HStack>
       </HStack>
     </HStack>
   )

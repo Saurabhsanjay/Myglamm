@@ -41,7 +41,7 @@ const SanitizingCare = () => {
      
       <SimpleGrid p={{base:0,sm:4}} w={{base:"100%",lg:"90%"}}   columns={{ base: 2,sm:3,md:4}}   spacing={{base:0,md:3,lg:5}}>
         
-          {productsData.products[0]?.SanitizingCare?.map((el,i) => {
+          {productsData?.products[0]?.SanitizingCare?.map((el,i) => {
                     return (
                       <Box cursor={'pointer'} onClick={()=>Navigate(`/singleproductpage/SanitizingCare/${el.id}`)} key={i} border='1px solid #eeee'  >
                 <Box px='2' borderRadius={2} >

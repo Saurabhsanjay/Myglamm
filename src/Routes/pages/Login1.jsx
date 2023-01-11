@@ -69,6 +69,7 @@ const toast=useToast()
                 isClosable: true,
                 duration: 2000,
               });
+               localStorage.setItem("user", JSON.stringify(res.id));
               Navigate("/")
               setLoginModal(false)
             })
@@ -118,7 +119,7 @@ const toast=useToast()
 
   return (
     <>
-      <Modal isOpen={isOpen} size={"sm"}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
