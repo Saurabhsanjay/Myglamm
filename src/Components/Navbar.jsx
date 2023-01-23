@@ -60,7 +60,7 @@ const Navbar = () => {
   const toast = useToast();
   const { isAuth, userName, LogOutUser } = useContext(AppContext);
   const Navigate = useNavigate();
-
+const username=JSON.parse(localStorage.getItem("username"))
   const links = [
     { path: "/", title: "HOME" },
     { path: "/makeup", title: "MAKEUP" },
@@ -102,6 +102,7 @@ const getCartData = () => {
   
   }).finally(() => setLoading(false));
 };
+
 
   
 
@@ -157,28 +158,34 @@ const getCartData = () => {
           </InputGroup>
           <Spacer />
           <HStack>
-           {" "}
-           <CartDrawer getCartData={getCartData} loading={loading} cartData={cartData}/>
-          
+            {" "}
+            <CartDrawer
+              getCartData={getCartData}
+              loading={loading}
+              cartData={cartData}
+            />
             <Text>
               <Login />
             </Text>
             {isAuth ? (
               <>
-                <Text>{userName}</Text>
-                <Button onClick={() => LogOut_User()}>LOGOUT</Button>
+              <HStack>
+
+                <Text fontSize={'sm'}>{username}</Text>
+                <Button size={'sm'} px='6' colorScheme={'pink'} py='0' onClick={() => LogOut_User()}>Logout</Button>
+              </HStack>
               </>
             ) : (
               <>
                 <NavLink to="/login">
-                  <Button colorScheme="facebook">Login</Button>
+                  <Text></Text>
                 </NavLink>
               </>
             )}
           </HStack>
         </HStack>
         <Wrap spacing={5} alignSelf="center" justify="center" margin="auto">
-          {links.map((link,i) => (
+          {links.map((link, i) => (
             <WrapItem>
               <NavLink
                 // style={({ isActive }) => {
@@ -221,7 +228,7 @@ const getCartData = () => {
               <Scrollbars>
                 <DrawerBody>
                   <SimpleGrid>
-                    {cartData.map((el) => {
+                    {cartData?.map((el) => {
                       return (
                         <Box
                           marginBottom={2}

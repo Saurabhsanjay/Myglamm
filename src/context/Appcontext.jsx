@@ -1,4 +1,4 @@
-import { CircularProgress, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import React, { createContext, useEffect, useState } from "react";
 import { useMemo } from "react";
 export const AppContext = createContext();
@@ -2062,7 +2062,7 @@ const AllData = {
 };
 
 export const AppContextProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false);
+  const isAuth = JSON.parse(localStorage.getItem("username"));
   const [userName, setUser] = useState("");
 
   
@@ -2096,12 +2096,12 @@ export const AppContextProvider = ({ children }) => {
 
   const LoginUser = (name) => {
     console.log("APP CONTEXT");
-    setIsAuth(true);
+    
     setUser(name);
   };
 
   const LogOutUser = () => {
-    setIsAuth(false);
+    
     setUser("");
   };
 

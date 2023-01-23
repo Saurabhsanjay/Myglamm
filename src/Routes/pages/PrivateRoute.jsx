@@ -1,12 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 
 import { Navigate } from "react-router-dom";
+import AppContext from "../../context/Appcontext";
 
 
 function PrivateRoute({ children }) {
+  const {isAuth}=useContext(AppContext)
   
   
-  const isAuth  = JSON.parse(localStorage.getItem("username"))
   console.log(isAuth,"local");
 
   if (!isAuth) {
