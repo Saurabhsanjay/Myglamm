@@ -71,7 +71,6 @@ MyGlamm Clone is MERN Stack e-commerce web application that allows you to buy Co
 - Product Listing Page with Filters
 - Product Description Page
 - Cart Management Page
-- Wishlist/Favourites Management Page
 - Checkout with Address Management Page
 - Login / Logout Page
 - Signup Page
@@ -252,7 +251,7 @@ To run this project, you will need to add the following environment variables to
 ### Tools used on this project
 
 - Visual Studio Code
-- Vite-JS template
+- CRA template
 - MongoDB compass
 - Razorpay Dashboard to monitor payments
 

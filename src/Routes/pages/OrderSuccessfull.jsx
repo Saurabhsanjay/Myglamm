@@ -11,9 +11,9 @@ const OrderSuccessfull = () => {
 
   return (
     <div>
-      <VStack margin="auto"  style={{marginTop:"150px", marginBottom:"80px",}} >
+      <VStack margin="auto"  style={{marginTop:"60px", marginBottom:"80px",}} >
         <div>
-          <img 
+          <img width={"350"}
           
             src="https://www.pinkwigscloset.com/images/success-tick.gif"
             alt="img"

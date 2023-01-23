@@ -1,7 +1,9 @@
 import { HStack, Image } from '@chakra-ui/react'
 import React from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import AppContext from '../../context/Appcontext'
 
 
 const BLAHb=[
@@ -1558,6 +1560,7 @@ const BLAHb=[
                   
               ]
 const SearchBar = () => {
+    const { productsData } = useContext(AppContext);
     const Navigate=useNavigate()
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -1567,7 +1570,7 @@ const SearchBar = () => {
   
   const handleOnSelect = (item) => {
     // the item selected
-    Navigate(`/singleproductpage/${item.id}`)
+    Navigate(`/singleproductpage/type/${item.id}`)
     console.log(item)
   }
 
@@ -1586,19 +1589,22 @@ const SearchBar = () => {
 
   return (
     <div style={{ width: 500 }}>
-    <ReactSearchAutocomplete
-      items={BLAHb}
-      onSearch={handleOnSearch}
-      // onHover={handleOnHover}
-       onSelect={handleOnSelect}
-      // onFocus={handleOnFocus}
-      autoFocus
-      formatResult={formatResult}
-      styling={{borderRadius:"7px"}}
-      
-    />
-  </div>
-  )
+      <ReactSearchAutocomplete
+        items={BLAHb}
+        onSearch={handleOnSearch}
+        //  fuseOptions={{ keys: ["title", "description"] }}
+        //     // necessary, otherwise the results will be blank
+        //  resultStringKeyName="title"
+
+        // onHover={handleOnHover}
+        onSelect={handleOnSelect}
+        // onFocus={handleOnFocus}
+        autoFocus
+        formatResult={formatResult}
+        styling={{ borderRadius: "7px" }}
+      />
+    </div>
+  );
 }
 
 export default SearchBar

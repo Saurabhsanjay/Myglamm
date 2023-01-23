@@ -70,6 +70,7 @@ const toast=useToast()
                 duration: 2000,
               });
                localStorage.setItem("user", JSON.stringify(res.id));
+               localStorage.setItem("username", JSON.stringify(res.name));
               Navigate("/")
               setLoginModal(false)
             })

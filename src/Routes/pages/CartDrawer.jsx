@@ -29,22 +29,40 @@ const CartDrawer = ({cartData,getCartData,loading}) => {
     useEffect(()=>{
        getCartData();
     },[])
+
+  let cartlength = cartData?.filter((el) => el.user === user);
+  console.log(cartlength?.length,"kkk");
+
   return (
     <div>
       <>
-      {/* <BsBag fontSize="20px"  /> */}
-     <HStack>
-
-      <HiOutlineShoppingBag cursor={'pointer'} onClick={()=>{onOpen();getCartData()}}  size={'1.5rem'} />     <span
-         style={{ height: "20px", width: "20px", backgroundColor:
-          "black", borderRadius: "50%", color: "white", textAlign: 
-          "center", marginLeft: "-3px", marginBottom: "0.7rem" }} class="dot">{cartData.length}</span></HStack>
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          
-        >
+        {/* <BsBag fontSize="20px"  /> */}
+        <HStack>
+          <HiOutlineShoppingBag
+            cursor={"pointer"}
+            onClick={() => {
+              onOpen();
+              getCartData();
+            }}
+            size={"1.5rem"}
+          />{" "}
+          <span
+            style={{
+              height: "20px",
+              width: "20px",
+              backgroundColor: "black",
+              borderRadius: "50%",
+              color: "white",
+              textAlign: "center",
+              marginLeft: "-3px",
+              marginBottom: "0.7rem",
+            }}
+            class="dot"
+          >
+            {cartlength ? cartlength.length : 0}
+          </span>
+        </HStack>
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -52,58 +70,88 @@ const CartDrawer = ({cartData,getCartData,loading}) => {
               {" "}
               <Flex pt={2} gap="10px">
                 <BsBag />
-                  {/* My Bag ({cartData.updatedqty}){" "}  */}
+                {/* My Bag ({cartData.updatedqty}){" "}  */}
               </Flex>
             </DrawerHeader>
             <Scrollbars>
               <DrawerBody>
+                {user ? (
+                  ""
+                ) : (
+                  <VStack w="100%" h="400px" m="auto">
+                    <Image src="https://cdn.dribbble.com/users/887568/screenshots/3172047/ufo.gif" />
+                    <Text w="full" h="100%" textAlign={"center"}>
+                      Cart Is Empty
+                    </Text>
+                  </VStack>
+                )}
                 <SimpleGrid>
-                 {
-                    loading ? (
-                        <div style={{display:"grid",placeItems:"center",height:"500px"}}>
-            <CircularProgress isIndeterminate color='pink.500' thickness='6px' size='3.5rem' />
-            </div>
-                    ):(
+                  {loading ? (
+                    <div
+                      style={{
+                        display: "grid",
+                        placeItems: "center",
+                        height: "500px",
+                      }}
+                    >
+                      <CircularProgress
+                        isIndeterminate
+                        color="pink.500"
+                        thickness="6px"
+                        size="3.5rem"
+                      />
+                    </div>
+                  ) : (
                     cartData?.map((el) => {
-                    if(el.user===user)
-                   
-                    return (
-                      <Box key={el._id}
-                        marginBottom={2}
-                        borderRadius="lg"
-                        p={1}
-                        border="1px solid #a0b2cd"
-                      >
-                        <Flex gap="5px">
-                          <Image w="80px" src={el.image} />
-                          <Text fontSize="sm" fontWeight="500">
-                            {el.title}
-                          </Text>
-                        </Flex>
-                        <Flex justify="space-evenly">
-                          <Text p={2} fontSize="sm" fontWeight="500">
-                            ₹ {el.price}
-                          </Text>
-                          <Text p={1} fontSize="md" fontWeight="500">
-                            Qty
-                          </Text>
-                          <ButtonGroup size='sm' isAttached variant='outline'>
-  <IconButton  aria-label='Add to friends' icon={<MinusIcon />} />
-  <Button>{el.updatedqty}</Button>
-            <IconButton aria-label='Add to friends' icon={<AddIcon />} />
-</ButtonGroup>
-                        </Flex>
-                        <Button
-                        //   onClick={() => handleRemove(el.id)}
-                          colorScheme="red"
-                          size="xs"
-                        >
-                          Remove Product
-                        </Button>
-                      </Box>
-                    );
-                  }))
-                  } 
+                      if (el.user === user)
+                        return (
+                          <Box
+                            key={el._id}
+                            marginBottom={2}
+                            borderRadius="lg"
+                            p={1}
+                            border="1px solid #a0b2cd"
+                          >
+                            <Flex gap="5px">
+                              <Image w="80px" src={el.image} />
+                              <Text fontSize="sm" fontWeight="500">
+                                {el.title}
+                              </Text>
+                            </Flex>
+                            <Flex justify="space-evenly">
+                              <Text p={2} fontSize="sm" fontWeight="500">
+                                ₹ {el.price}
+                              </Text>
+                              <Text p={1} fontSize="md" fontWeight="500">
+                                Qty
+                              </Text>
+                              <ButtonGroup
+                                size="sm"
+                                isAttached
+                                variant="outline"
+                              >
+                                <IconButton
+                                  aria-label="Add to friends"
+                                  icon={<MinusIcon />}
+                                />
+                                <Button>{el.updatedqty}</Button>
+                                <IconButton
+                                  aria-label="Add to friends"
+                                  icon={<AddIcon />}
+                                />
+                              </ButtonGroup>
+                            </Flex>
+                            <Button
+                              //   onClick={() => handleRemove(el.id)}
+                              colorScheme="red"
+                              size="xs"
+                            >
+                              Remove Product
+                            </Button>
+                          </Box>
+                        );
+                    })
+                  )}
                 </SimpleGrid>
               </DrawerBody>
             </Scrollbars>
