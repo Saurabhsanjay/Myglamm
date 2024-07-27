@@ -1,4 +1,4 @@
-<h1 align="center">MyGlamm Clone</h1>
+<h1 align="center">MyGlamm</h1>
 
 <h3 align="center">It's a MERN Stack E-commerce web application with all the major functionalities</h3>
 
